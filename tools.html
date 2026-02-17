@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Free Online Tools | FreeToolsHub</title>
+
+<meta name="description" content="Browse 100+ free online tools including PDF converters, SEO tools, GPA calculator, word counter, image resizer & more. Fast, secure & no signup required.">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freetoolshub.online/tools.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="All Free Online Tools | FreeToolsHub">
+<meta property="og:description" content="Free PDF tools, SEO tools, calculators & more – 100% free and secure.">
+<meta property="og:type" content="website">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Free Online Tools",
+  "url": "https://freetoolshub.online/tools.html"
+}
+</script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-blue-600">
+<a href="/">FreeToolsHub</a>
+</h1>
+
+<nav class="space-x-6 hidden md:block">
+<a href="/" class="hover:text-blue-600">Home</a>
+<a href="tools.html" class="text-blue-600 font-semibold">Tools</a>
+<a href="blog.html" class="hover:text-blue-600">Blog</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="bg-blue-600 text-white py-16 text-center">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-4">All Free Online Tools</h2>
+<p class="text-lg">Fast, Secure & 100% Free Tools for Everyone</p>
+</div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="container mx-auto px-4 mt-6 text-sm text-gray-500">
+<a href="index.html" class="hover:text-blue-600">Home</a> 
+<span class="mx-2">/</span>
+<span class="text-gray-700 font-medium">All Tools</span>
+</div>
+
+<!-- SEARCH -->
+<section class="py-10">
+<div class="container mx-auto px-4 text-center">
+<input type="text" id="searchInput" placeholder="Search tools..."
+class="w-full md:w-1/2 px-4 py-3 border rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+</section>
+
+<!-- TOOLS GRID -->
+<section class="pb-16">
+<div class="container mx-auto px-4">
+<div id="toolsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4 max-w-4xl">
+<h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+
+<div class="space-y-6">
+
+<div>
+<h3 class="font-semibold">Are all tools free?</h3>
+<p class="text-gray-600">Yes, all tools are completely free to use.</p>
+</div>
+
+<div>
+<h3 class="font-semibold">Do I need registration?</h3>
+<p class="text-gray-600">No signup required. Use tools instantly.</p>
+</div>
+
+<div>
+<h3 class="font-semibold">Are my files safe?</h3>
+<p class="text-gray-600">Most tools process data in your browser and do not store files.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-10 text-center">
+<p>© 2026 FreeToolsHub. All Rights Reserved.</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+let allTools = [];
+
+fetch('tools.json')
+.then(response => response.json())
+.then(data => {
+    allTools = data;
+    displayTools(allTools);
+});
+
+function displayTools(tools) {
+    const container = document.getElementById('toolsContainer');
+    container.innerHTML = '';
+
+    if(tools.length === 0){
+        container.innerHTML = "<p class='text-center col-span-3'>No tools found.</p>";
+        return;
+    }
+
+    tools.forEach(tool => {
+        const card = `
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition">
+            <h3 class="text-xl font-semibold mb-2">${tool.name}</h3>
+            <p class="text-gray-600 mb-4">${tool.description}</p>
+            <a href="${tool.url}" class="text-blue-600 font-semibold hover:underline">
+                Use Tool →
+            </a>
+        </div>
+        `;
+        container.innerHTML += card;
+    });
+}
+
+document.getElementById('searchInput').addEventListener('keyup', function(){
+    const value = this.value.toLowerCase();
+    const filtered = allTools.filter(tool =>
+        tool.name.toLowerCase().includes(value) ||
+        tool.description.toLowerCase().includes(value)
+    );
+    displayTools(filtered);
+});
+</script>
+
+</body>
+</html>
