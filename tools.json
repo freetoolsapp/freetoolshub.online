@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Word Counter",
+    "slug": "word-counter",
+    "description": "Count words, characters and sentences instantly online.",
+    "url": "tools/word-counter.html",
+    "category": "utility",
+    "icon": "fa-keyboard",
+    "keywords": ["word count", "character counter", "text tool"],
+    "featured": true
+  },
+  {
+    "name": "GPA Calculator",
+    "slug": "gpa-calculator",
+    "description": "Calculate GPA online for school and university students.",
+    "url": "tools/gpa-calculator.html",
+    "category": "student",
+    "icon": "fa-graduation-cap",
+    "keywords": ["gpa", "grade calculator", "student tool"],
+    "featured": true
+  },
+  {
+    "name": "Meta Tag Generator",
+    "slug": "meta-tag-generator",
+    "description": "Generate SEO meta title and description tags easily.",
+    "url": "tools/meta-tag-generator.html",
+    "category": "seo",
+    "icon": "fa-chart-line",
+    "keywords": ["seo tool", "meta tags", "google ranking"],
+    "featured": true
+  },
+  {
+    "name": "Image Resizer",
+    "slug": "image-resizer",
+    "description": "Resize and compress images online for free.",
+    "url": "tools/image-resizer.html",
+    "category": "design",
+    "icon": "fa-image",
+    "keywords": ["resize image", "compress image", "photo tool"],
+    "featured": false
+  },
+  {
+    "name": "HTML Minifier",
+    "slug": "html-minifier",
+    "description": "Minify HTML code to reduce file size and improve speed.",
+    "url": "tools/html-minifier.html",
+    "category": "webdev",
+    "icon": "fa-code",
+    "keywords": ["minify html", "web development tool"],
+    "featured": false
+  }
+]
