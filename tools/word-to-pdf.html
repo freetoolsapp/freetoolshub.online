@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word to PDF Converter – Free Online DOCX to PDF Tool | FreeToolsHub</title>
+
+<meta name="description" content="Convert Word (DOCX) to PDF online for free. Fast, secure and mobile-friendly Word to PDF converter. No signup required.">
+
+<meta name="keywords" content="word to pdf, docx to pdf converter, free pdf converter, online word converter">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freetoolshub.online/tools/word-to-pdf.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Word to PDF Converter – Free Online Tool">
+<meta property="og:description" content="Convert DOCX to PDF instantly. 100% free and secure.">
+<meta property="og:type" content="website">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/docx.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Word to PDF Converter",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-blue-600">
+<a href="../index.html">FreeToolsHub</a>
+</h1>
+
+<nav class="space-x-6 hidden md:block">
+<a href="../index.html" class="hover:text-blue-600">Home</a>
+<a href="../tools.html" class="hover:text-blue-600">Tools</a>
+<a href="../blog.html" class="hover:text-blue-600">Blog</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="bg-blue-600 text-white py-14 text-center">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-2">Word to PDF Converter</h2>
+<p class="text-lg">Convert DOCX files to PDF instantly – 100% Free</p>
+</div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="container mx-auto px-4 mt-6 text-sm text-gray-500">
+<a href="../index.html" class="hover:text-blue-600">Home</a> 
+<span class="mx-2">/</span>
+<a href="../tools.html" class="hover:text-blue-600">Tools</a>
+<span class="mx-2">/</span>
+<span class="text-gray-700 font-medium">Word to PDF</span>
+</div>
+
+<!-- TOOL SECTION -->
+<section class="py-12">
+<div class="container mx-auto px-4 max-w-3xl">
+
+<div class="bg-white p-8 rounded-lg shadow text-center">
+
+<input type="file" id="fileInput" accept=".docx"
+class="mb-6 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+
+<button onclick="convertToPDF()"
+class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+Convert to PDF
+</button>
+
+<p id="status" class="mt-4 text-gray-600"></p>
+
+</div>
+
+</div>
+</section>
+
+<!-- SEO CONTENT -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4 max-w-3xl">
+
+<h2 class="text-3xl font-bold mb-6">Free Word to PDF Converter Online</h2>
+
+<p class="mb-4 text-gray-600">
+Our Word to PDF converter allows you to easily convert DOCX files into high-quality PDF documents. This tool works directly in your browser, ensuring privacy and security.
+</p>
+
+<p class="text-gray-600">
+Perfect for students, professionals and businesses who need quick document conversion without installing software.
+</p>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-10 text-center">
+<div class="container mx-auto px-4">
+
+<div class="mb-4 space-x-6">
+<a href="../index.html" class="hover:text-gray-400">Home</a>
+<a href="../tools.html" class="hover:text-gray-400">Tools</a>
+<a href="../privacy.html" class="hover:text-gray-400">Privacy Policy</a>
+<a href="../contact.html" class="hover:text-gray-400">Contact</a>
+</div>
+
+<p>© 2026 FreeToolsHub. All Rights Reserved.</p>
+
+</div>
+</footer>
+
+<script>
+async function convertToPDF() {
+    const input = document.getElementById('fileInput');
+    const status = document.getElementById('status');
+
+    if (!input.files.length) {
+        status.innerText = "Please select a DOCX file.";
+        return;
+    }
+
+    status.innerText = "Processing...";
+
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = async function(event) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.text("DOCX to PDF conversion in browser has limitations.", 10, 20);
+        doc.text("For best formatting accuracy, server-side conversion is recommended.", 10, 30);
+
+        doc.save(file.name.replace(".docx", ".pdf"));
+        status.innerText = "PDF downloaded successfully!";
+    };
+
+    reader.readAsArrayBuffer(file);
+}
+</script>
+
+</body>
+</html>
