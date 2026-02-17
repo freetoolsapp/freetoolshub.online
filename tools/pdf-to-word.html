@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF to Word Converter – Free Online PDF to DOC Tool | FreeToolsHub</title>
+
+<meta name="description" content="Convert PDF to Word (DOC) online for free. Fast, secure and mobile-friendly PDF to Word converter. No signup required.">
+
+<meta name="keywords" content="pdf to word, pdf to doc converter, free pdf converter, convert pdf online">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freetoolshub.online/tools/pdf-to-word.html">
+
+<meta property="og:title" content="PDF to Word Converter – Free Online Tool">
+<meta property="og:description" content="Convert PDF files to editable Word documents instantly. 100% free.">
+<meta property="og:type" content="website">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PDF to Word Converter",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-blue-600">
+<a href="../index.html">FreeToolsHub</a>
+</h1>
+
+<nav class="space-x-6 hidden md:block">
+<a href="../index.html" class="hover:text-blue-600">Home</a>
+<a href="../tools.html" class="hover:text-blue-600">Tools</a>
+<a href="../blog.html" class="hover:text-blue-600">Blog</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="bg-blue-600 text-white py-14 text-center">
+<div class="container mx-auto px-4">
+<h2 class="text-4xl font-bold mb-2">PDF to Word Converter</h2>
+<p class="text-lg">Convert PDF files into editable Word documents</p>
+</div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="container mx-auto px-4 mt-6 text-sm text-gray-500">
+<a href="../index.html" class="hover:text-blue-600">Home</a> 
+<span class="mx-2">/</span>
+<a href="../tools.html" class="hover:text-blue-600">Tools</a>
+<span class="mx-2">/</span>
+<span class="text-gray-700 font-medium">PDF to Word</span>
+</div>
+
+<!-- TOOL SECTION -->
+<section class="py-12">
+<div class="container mx-auto px-4 max-w-3xl">
+
+<div class="bg-white p-8 rounded-lg shadow text-center">
+
+<input type="file" id="pdfInput" accept=".pdf"
+class="mb-6 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+
+<button onclick="convertPDFtoWord()"
+class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+Convert to Word
+</button>
+
+<p id="status" class="mt-4 text-gray-600"></p>
+
+</div>
+
+</div>
+</section>
+
+<!-- SEO CONTENT -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4 max-w-3xl">
+
+<h2 class="text-3xl font-bold mb-6">Free PDF to Word Converter Online</h2>
+
+<p class="mb-4 text-gray-600">
+This free PDF to Word converter extracts text from PDF documents and converts it into an editable Word-compatible file. Works directly in your browser for maximum privacy.
+</p>
+
+<p class="text-gray-600">
+Ideal for students, professionals and businesses who need quick document editing.
+</p>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white py-10 text-center">
+<div class="container mx-auto px-4">
+
+<div class="mb-4 space-x-6">
+<a href="../index.html" class="hover:text-gray-400">Home</a>
+<a href="../tools.html" class="hover:text-gray-400">Tools</a>
+<a href="../privacy.html" class="hover:text-gray-400">Privacy Policy</a>
+<a href="../contact.html" class="hover:text-gray-400">Contact</a>
+</div>
+
+<p>© 2026 FreeToolsHub. All Rights Reserved.</p>
+
+</div>
+</footer>
+
+<script>
+async function convertPDFtoWord() {
+    const input = document.getElementById('pdfInput');
+    const status = document.getElementById('status');
+
+    if (!input.files.length) {
+        status.innerText = "Please select a PDF file.";
+        return;
+    }
+
+    status.innerText = "Extracting text...";
+
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = async function() {
+        const typedarray = new Uint8Array(this.result);
+        const pdf = await pdfjsLib.getDocument(typedarray).promise;
+
+        let fullText = "";
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            content.items.forEach(item => {
+                fullText += item.str + " ";
+            });
+            fullText += "\n\n";
+        }
+
+        const blob = new Blob([fullText], { type: "application/msword" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = file.name.replace(".pdf", ".doc");
+        link.click();
+
+        status.innerText = "Word file downloaded successfully!";
+    };
+
+    reader.readAsArrayBuffer(file);
+}
+</script>
+
+</body>
+</html>
